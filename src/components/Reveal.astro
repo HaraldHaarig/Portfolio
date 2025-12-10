@@ -1,0 +1,33 @@
+---
+const { as = "section", class: extra = "", ...rest } = Astro.props;
+
+const Tag = as;
+---
+
+<Tag
+  class={`opacity-0 translate-y-5 transition-all duration-700 ease-out will-change-transform reveal-section ${extra}`}
+  {...rest}
+>
+  <slot />
+</Tag>
+
+<script>
+  if (typeof window !== "undefined") {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("opacity-0", "translate-y-5");
+            entry.target.classList.add("animate-fade-up");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    document
+      .querySelectorAll(".reveal-section")
+      .forEach((el) => observer.observe(el));
+  }
+</script>

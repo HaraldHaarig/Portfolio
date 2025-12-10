@@ -1,0 +1,82 @@
+<button 
+  id="back-to-top"
+  class="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-primary to-secondary text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 opacity-0 translate-y-10 z-40 hidden"
+  aria-label="Nach oben scrollen"
+  onclick="scrollToTop()"
+>
+  <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+  </svg>
+</button>
+
+<script>
+// Extend Window interface for TypeScript
+declare global {
+  interface Window {
+    scrollToTop: () => void;
+  }
+}
+
+// Safely initialize
+function initBackToTop() {
+  const backToTop = document.getElementById('back-to-top');
+  
+  // Check if element exists
+  if (!backToTop) return;
+  
+  // Scroll event listener
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      backToTop.classList.remove('hidden', 'opacity-0', 'translate-y-10');
+      backToTop.classList.add('opacity-100', 'translate-y-0');
+    } else {
+      backToTop.classList.add('opacity-0', 'translate-y-10');
+      setTimeout(() => {
+        if (window.scrollY <= 500) {
+          backToTop.classList.add('hidden');
+        }
+      }, 300);
+    }
+  });
+  
+  // Add keyboard support
+  backToTop.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      scrollToTop();
+    }
+  });
+}
+
+// Scroll to top function
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initBackToTop);
+} else {
+  initBackToTop();
+}
+
+// Also export functions for manual calling
+window.scrollToTop = scrollToTop;
+</script>
+
+<style>
+#back-to-top {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#back-to-top:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.dark #back-to-top {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+</style>

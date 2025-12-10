@@ -1,0 +1,60 @@
+<div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+  <div id="blob1" class="absolute w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
+  <div id="blob2" class="absolute w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+  <div id="blob3" class="absolute w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl"></div>
+</div>
+
+<script>
+  let mouseX = 0;
+  let mouseY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animateBlobs() {
+    const scrollY = window.scrollY;
+    
+    const blob1 = document.getElementById('blob1');
+    const blob2 = document.getElementById('blob2');
+    const blob3 = document.getElementById('blob3');
+
+    if (blob1) {
+      blob1.style.top = `${20 + scrollY * 0.1}%`;
+      blob1.style.left = `${10 + mouseX * 0.01}%`;
+    }
+
+    if (blob2) {
+      blob2.style.top = `${60 + scrollY * 0.05}%`;
+      blob2.style.right = `${10 + mouseY * 0.01}%`;
+    }
+
+    if (blob3) {
+      blob3.style.bottom = `${10 + scrollY * 0.08}%`;
+      blob3.style.left = `${50 + mouseX * 0.005}%`;
+    }
+
+    requestAnimationFrame(animateBlobs);
+  }
+
+  animateBlobs();
+</script>
+
+<style>
+  #blob1, #blob2, #blob3 {
+    transition: all 0.3s ease-out;
+  }
+
+  #blob1 {
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  #blob2 {
+    animation: pulse 4s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  #blob3 {
+    animation: pulse 4s ease-in-out infinite;
+    animat

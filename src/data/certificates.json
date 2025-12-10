@@ -1,0 +1,13 @@
+{
+  "certificates": [
+    {
+      "title": "Introduction to Cybersecurity",
+      "issuer": "Cisco",
+      "date": "2024",
+      "image": "/assets/ciscoCybersecurity.jpg",
+      "tags": ["Cisco", "Cybersecurity", "Network Security", "Basics"],
+      "verifyUrl": "https://www.credly.com/badges/a3630d84-b8d7-47d4-9040-981033b8f5ed/public_url"
+    }
+  ]
+}
+

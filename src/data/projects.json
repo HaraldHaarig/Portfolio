@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Portfolio Website",
+    "description": "Moderne Portfolio-Website erstellt mit Astro und Tailwind CSS",
+    "technologies": ["Astro", "Tailwind CSS", "JavaScript", "Responsive Design"],
+    "category": "web",
+    "github": "https://github.com/dein-username/portfolio",
+    "live": "https://dein-portfolio.vercel.app",
+    "image": "/images/projects/portfolio.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Loreflix",
+    "description": "Website zum Durchstöbern und Entdecken von Filmen und Serien",
+    "technologies": ["React", "Node.js", "REST API"],
+    "category": "fullstack",
+    "github": "https://github.com/binmarkoo/Loreflix",
+    "image": "/images/projects/ecommerce.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Tierheim Frontend & Backend",
+    "description": "Website zum für ein fiktives Tierheim inklusive Admin Panel",
+    "technologies": ["C#", ".NET", "REST API"],
+    "category": "fullstack",
+    "github": "https://github.com/HaraldHaarig/Tierheim",
+    "image": "/images/projects/ecommerce.jpg"
+  }
+]

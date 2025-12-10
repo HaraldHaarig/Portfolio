@@ -1,0 +1,91 @@
+---
+// Separate About-Komponente mit Profilbild
+---
+
+<section id="about" class="py-20">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col lg:flex-row items-center gap-12">
+      
+      <!-- Profilbild (links) -->
+      <div class="lg:w-2/5" data-aos="fade-right">
+        <div class="relative">
+          <div class="w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full overflow-hidden border-8 border-white shadow-2xl bg-gradient-to-br from-primary/10 to-secondary/10">
+            <!-- Dein Profilbild hier -->
+            <img 
+              src="/images/profile.jpg" 
+              alt="Dein Name - Professionelles Porträt"
+              class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+              loading="eager"
+            />
+          </div>
+          
+          {/* Dekorative Elemente */}
+          <div class="absolute -top-4 left-1/4 w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-white shadow-lg">
+            <span class="text-lg">✨</span>
+          </div>
+          <div class="absolute -bottom-4 right-1/4 w-14 h-14 bg-gradient-to-r from-secondary to-primary rounded-full flex items-center justify-center text-white shadow-lg">
+            <span class="text-xl">⭐</span>
+          </div>
+        </div>
+        
+        {/* Quick Facts unter dem Bild */}
+        <div class="mt-8 grid grid-cols-2 gap-4">
+          <div class="text-center p-4 bg-white rounded-xl shadow-sm">
+            <div class="text-2xl font-bold text-primary">5+</div>
+            <div class="text-sm text-gray-600">Jahre Erfahrung</div>
+          </div>
+          <div class="text-center p-4 bg-white rounded-xl shadow-sm">
+            <div class="text-2xl font-bold text-secondary">20+</div>
+            <div class="text-sm text-gray-600">Projekte</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- About Text (rechts) -->
+      <div class="lg:w-3/5" data-aos="fade-left">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-dark">
+          Über <span class="text-primary">mich</span>
+        </h2>
+        
+        <div class="prose prose-lg max-w-none">
+          <p class="text-gray-700 mb-4">
+            Hallo! Ich bin <strong>Max Mustermann</strong>, ein leidenschaftlicher Full-Stack Entwickler mit über 5 Jahren Erfahrung in der Webentwicklung. 
+            Meine Reise begann mit einfachen HTML/CSS-Seiten und hat mich zu komplexen Webanwendungen geführt.
+          </p>
+          
+          <p class="text-gray-700 mb-6">
+            Ich spezialisiere mich auf moderne Technologien wie <strong>React, Node.js und Astro</strong>. 
+            Mein Fokus liegt darauf, nicht nur funktionale, sondern auch ästhetisch ansprechende und performante Lösungen zu schaffen.
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-primary rounded-full"></div>
+              <span>📍 Berlin, Deutschland</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-primary rounded-full"></div>
+              <span>🎓 Informatik B.Sc.</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-primary rounded-full"></div>
+              <span>💼 Verfügbar für Projekte</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-primary rounded-full"></div>
+              <span>🌍 Deutsch & Englisch</span>
+            </div>
+          </div>
+          
+          <a href="/cv.pdf" download class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg hover:opacity-90 transition-opacity">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Lebenslauf herunterladen
+          </a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>

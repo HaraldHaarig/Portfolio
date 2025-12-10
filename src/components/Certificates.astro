@@ -1,0 +1,262 @@
+---
+import certificatesData from '../data/certificates.json';
+
+const { certificates } = certificatesData;
+
+// Get all unique tags
+const allTags = ['alle', ...new Set(certificates.flatMap(cert => cert.tags))];
+---
+
+<section id="certificates" class="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
+  <div class="container mx-auto px-4">
+    
+    {/* Header */}
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-dark dark:text-white">
+        Meine <span class="text-primary">Zertifikate</span>
+      </h2>
+      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        Verifizierte Qualifikationen in verschiedenen Technologiebereichen
+      </p>
+    </div>
+
+    {/* Tags Filter */}
+    <div class="mb-8" data-aos="fade-up">
+      <div class="flex flex-wrap justify-center gap-2" id="filter-tags">
+        {allTags.map(tag => (
+          <button 
+            data-tag={tag}
+            class="filter-btn px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300"
+            onclick={`filterCertificates('${tag}')`}
+          >
+            {tag === 'alle' ? 'Alle' : tag}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    {/* Certificates Grid */}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="certificates-grid">
+      {certificates.map((cert, index) => (
+        <div 
+          class="certificate-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-500 group"
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
+          data-tags={cert.tags.join(',')}
+        >
+          
+          {/* Certificate Image */}
+          <div class="relative h-48 overflow-hidden">
+            {/* Image or Fallback */}
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+              {cert.image ? (
+                <img 
+                  src={cert.image} 
+                  alt={`Zertifikat: ${cert.title} von ${cert.issuer}`}
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="text-center p-4">
+                  <div class="text-5xl mb-4">🏆</div>
+                  <div class="text-lg font-bold text-white">{cert.title}</div>
+                </div>
+              )}
+            </div>
+            
+            {/* Gradient Overlay */}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            {/* Issuer Badge */}
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-full text-xs font-semibold">
+                {cert.issuer}
+              </span>
+            </div>
+          </div>
+
+          {/* Certificate Content */}
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-xl font-bold mb-2 text-dark dark:text-white group-hover:text-primary transition-colors">
+                  {cert.title}
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">
+                  {cert.date}
+                </p>
+              </div>
+              <span class="text-2xl">🎓</span>
+            </div>
+            
+            {/* Tags */}
+            <div class="flex flex-wrap gap-2 mb-6">
+              {cert.tags.map(tag => (
+                <span 
+                  onclick={`filterCertificates('${tag}')`}
+                  class="tag-item px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-full hover:bg-primary/10 hover:text-primary dark:hover:text-primary cursor-pointer transition-colors"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+            
+            {/* Verify Button */}
+            <a 
+              href={cert.verifyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors group/verify"
+            >
+              <span>Zertifikat verifizieren</span>
+              <svg class="w-4 h-4 transform group-hover/verify:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* Stats */}
+    <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6" data-aos="fade-up">
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow text-center border border-gray-200 dark:border-gray-700">
+        <div class="text-3xl font-bold text-primary">{certificates.length}</div>
+        <div class="text-gray-600 dark:text-gray-400">Zertifikate</div>
+      </div>
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow text-center border border-gray-200 dark:border-gray-700">
+        <div class="text-3xl font-bold text-green-600">
+          {new Set(certificates.flatMap(c => c.tags)).size}
+        </div>
+        <div class="text-gray-600 dark:text-gray-400">Kompetenzbereiche</div>
+      </div>
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow text-center border border-gray-200 dark:border-gray-700">
+        <div class="text-3xl font-bold text-blue-600">
+          {new Set(certificates.map(c => c.issuer)).size}
+        </div>
+        <div class="text-gray-600 dark:text-gray-400">Aussteller</div>
+      </div>
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow text-center border border-gray-200 dark:border-gray-700">
+        <div class="text-3xl font-bold text-purple-600">
+          {new Date().getFullYear() - Math.min(...certificates.map(c => parseInt(c.date))) + 1}
+        </div>
+        <div class="text-gray-600 dark:text-gray-400">Jahre Expertise</div>
+      </div>
+    </div>
+
+    {/* Instructions */}
+    <div class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
+      <p>📁 Erstelle einen Ordner <code class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">public/images/certificates/</code> und lade deine Zertifikatsbilder hoch.</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+// Filter function
+function filterCertificates(tag) {
+  const certificateCards = document.querySelectorAll('.certificate-card');
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  
+  // Update active button
+  filterButtons.forEach(btn => {
+    const btnTag = btn.getAttribute('data-tag');
+    if (btnTag === tag) {
+      btn.classList.add('active-tag');
+      btn.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+      btn.classList.add('bg-gradient-to-r', 'from-primary', 'to-secondary', 'text-white', 'shadow-lg');
+    } else {
+      btn.classList.remove('active-tag');
+      btn.classList.remove('bg-gradient-to-r', 'from-primary', 'to-secondary', 'text-white', 'shadow-lg');
+      btn.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+    }
+  });
+  
+  // Filter cards
+  certificateCards.forEach(card => {
+    const cardTags = (card.getAttribute('data-tags') || '').split(',').filter(tag => tag);
+    
+    if (tag === 'alle' || cardTags.includes(tag)) {
+      card.classList.remove('hidden');
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      
+      // Animate in
+      setTimeout(() => {
+        card.style.transition = 'all 0.5s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, 10);
+    } else {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      
+      setTimeout(() => {
+        card.classList.add('hidden');
+      }, 300);
+    }
+  });
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+  // Set first button as active
+  const firstButton = document.querySelector('.filter-btn');
+  if (firstButton) {
+    firstButton.classList.add('active-tag');
+    firstButton.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+    firstButton.classList.add('bg-gradient-to-r', 'from-primary', 'to-secondary', 'text-white', 'shadow-lg');
+  }
+  
+  // Add keyboard support
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  filterButtons.forEach(btn => {
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const tag = btn.getAttribute('data-tag');
+        filterCertificates(tag);
+      }
+    });
+  });
+});
+</script>
+
+<style>
+  /* Hover Effects */
+  .certificate-card {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  .certificate-card:hover {
+    transform: translateY(-8px);
+  }
+  
+  /* Animation classes */
+  .certificate-card.hidden {
+    display: none;
+  }
+  
+  /* Tag hover effect */
+  .tag-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  }
+  
+  /* Active filter button */
+  .filter-btn.active-tag {
+    position: relative;
+  }
+  
+  .filter-btn.active-tag::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    background: currentColor;
+    border-radius: 2px;
+  }
+</style>
