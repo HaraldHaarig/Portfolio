@@ -26,5 +26,30 @@
     "category": "fullstack",
     "github": "https://github.com/HaraldHaarig/Tierheim",
     "image": "/images/projects/ecommerce.jpg"
+  },
+  {
+    "id": 4,
+    "title": "V.E.R.G.A.",
+    "description": "Benutzerfreundlicher Gamelauncher zur Verwaltung und zum Starten von Spielen",
+    "technologies": ["Python", "REST API", "Tkinter", "PostgreSQL"],
+    "category": "fullstack",
+    "github": "https://github.com/HaraldHaarig/V.E.R.G.A"
+  },
+  {
+    "id": 5,
+    "title": "B.I.O.M.B.O",
+    "description": "Interaktive Webanwendung zur Visualisierung der Fahrtstrecke eines MBots",
+    "technologies": ["Python", "Django", "React", "REST API", "MongoDB"],
+    "category": "certificate",
+    "image": "/images/certificates/ciscoCybersecurity.png",
+    "github": "https://github.com/sonrotz0815/SYP_Mbot2_B.I.O.M.B.O"
+  },
+  {
+    "id": 6,
+    "title": "PictureDrop",
+    "description": "Webanwendung zum einfachen Hochladen und Teilen von Bildern",
+    "technologies": ["Angular", "Nest.js", "REST API"],
+    "category": "school",
+    "github": "https://github.com/HaraldHaarig/PictureDrop"
   }
 ]

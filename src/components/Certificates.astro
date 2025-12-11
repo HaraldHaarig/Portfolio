@@ -1,6 +1,6 @@
 ---
 import certificatesData from '../data/certificates.json';
-
+import CybersecurityPicture from '../assets/ciscoCybersecurity.jpg';
 const { certificates } = certificatesData;
 
 // Get all unique tags
@@ -143,12 +143,6 @@ const allTags = ['alle', ...new Set(certificates.flatMap(cert => cert.tags))];
         <div class="text-gray-600 dark:text-gray-400">Jahre Expertise</div>
       </div>
     </div>
-
-    {/* Instructions */}
-    <div class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
-      <p>📁 Erstelle einen Ordner <code class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">public/images/certificates/</code> und lade deine Zertifikatsbilder hoch.</p>
-    </div>
-
   </div>
 </section>
 
