@@ -3,22 +3,22 @@ import BaseLayout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import Skills from '../components/Skills.astro';
+import Career from '../components/Career.astro';  // ← NEU
 import Projects from '../components/Projects.astro';
 import Certificates from '../components/Certificates.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
-import BackToTop from '../components/BackToTop.astro'; // ← NEU
 ---
 
-<BaseLayout title="Max Mustermann | Portfolio">
+<BaseLayout title="Dein Portfolio">
   <Header slot="header" />
   
   <Hero />
   <Skills />
+  <Career />
   <Projects />
   <Certificates />
   <Contact />
-  <BackToTop /> {/* ← Hier einfügen */}
   
   <Footer slot="footer" />
 </BaseLayout>

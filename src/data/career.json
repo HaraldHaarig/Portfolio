@@ -1,0 +1,65 @@
+{
+  "timeline": [
+    {
+      "type": "education",
+      "title": "Volksschule",
+      "subtitle": "Grundschule",
+      "location": "Volksschule am Dom, Österreich",
+      "period": "2013 - 2017",
+      "description": "Grundlegende schulische Ausbildungen",
+      "icon": "🏫",
+      "color": "from-blue-400 to-blue-600"
+    },
+    {
+      "type": "education",
+      "title": "Gymnasium/Unterstufe",
+      "subtitle": "Allgemeinbildende Höhere Schule",
+      "location": "BORG St. Johann im Pongau, Österreich",
+      "period": "2017 - 2021",
+      "description": "Erweiterte Allgemeinbildung.",
+      "icon": "📚",
+      "color": "from-green-400 to-green-600"
+    },
+    {
+      "type": "education",
+      "title": "HTL Informatik",
+      "subtitle": "Höhere Technische Lehranstalt - Aktuell",
+      "location": "HTL Saalfelden, Österreich",
+      "period": "2021 - Jetzt",
+      "description": "Vertiefte technische Ausbildung mit Schwerpunkt auf Informatik",
+      "icon": "💻",
+      "color": "from-purple-400 to-purple-600",
+      "current": true
+    },
+    {
+      "type": "internship",
+      "title": "Erstes Praktikum",
+      "subtitle": "Logistik Abteilung",
+      "location": "Jacoby GM Pharma, Österreich",
+      "period": "Sommer 2023",
+      "description": "4 Wochen",
+      "icon": "🚀",
+      "color": "from-orange-400 to-orange-600"
+    },
+    {
+      "type": "internship",
+      "title": "Zweites Praktikum",
+      "subtitle": "IT Abteilung",
+      "location": "Kardinal Schwarzenberg, Österreich",
+      "period": "Sommer 2023",
+      "description": "2 Wochen",
+      "icon": "⚛️",
+      "color": "from-pink-400 to-pink-600"
+    },
+    {
+      "type": "internship",
+      "title": "Drittes Praktikum",
+      "subtitle": "IT Abteilung",
+      "location": "Jacoby GM Pharma, Österreich",
+      "period": "Sommer 2024",
+      "description": "4 Wochen",
+      "icon": "🔧",
+      "color": "from-indigo-400 to-indigo-600"
+    }
+  ]
+}
